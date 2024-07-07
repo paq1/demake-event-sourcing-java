@@ -16,12 +16,7 @@ public class MyOntologyReducer implements Reducer<MyOntologyStates, MyOntologyEv
         if (myOntologyStates.isPresent()) {
             var currentState = myOntologyStates.get();
             return switch (currentState) {
-                case OntologyActifState active -> {
-                    yield switch (myOntologyEvents) {
-                        case OntologyCanceled canceled -> Optional.of(new OntologyCancelState());
-                        default -> Optional.empty();
-                    };
-                }
+                case OntologyActifState active -> active.reduce(myOntologyEvents);
                 default -> Optional.empty();
             };
         } else {
