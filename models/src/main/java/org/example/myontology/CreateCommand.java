@@ -1,3 +1,3 @@
 package org.example.myontology;
 
-public record CreateCommand(String name) implements Commands { }
+public record CreateCommand(String name) implements MyOntologyCommands { }
